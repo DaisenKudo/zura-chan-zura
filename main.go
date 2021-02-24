@@ -15,6 +15,7 @@ func main() {
 	engine.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title" : "ずらちゃんずら💓",
+			"text" : "ずらちゃんずら💓",
 		})
 	})
 	engine.Run(":8080")
