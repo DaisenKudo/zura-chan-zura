@@ -1,4 +1,6 @@
 # Zura-chanZura
+すばやくWebサイトを構築できるテンプレート
+Golang + gin + Typescriptが使えます。Herokuへのデプロイも。
 
 ## Zura-chanZuraについて
 このプログラムは「Honoka」を使用しています。
