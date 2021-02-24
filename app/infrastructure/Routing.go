@@ -25,9 +25,12 @@ func NewRouting() *Routing {
 }
 
 func (r *Routing) loadTemplates() {
+	println("-------------------------------")
+	println(r.AbsolutePath)
+	println("-------------------------------")
 	r.Gin.Use(favicon.New("./assets/icon/favicon.ico"))
+	r.Gin.Static("/assets", r.AbsolutePath + "/assets")
 	r.Gin.LoadHTMLGlob(r.AbsolutePath + "/app/interfaces/presenters/index.html")
-	r.Gin.Static("/assets", r.AbsolutePath + "./assets")
 }
 
 func (r *Routing) setRouting() {
