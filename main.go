@@ -1,13 +1,12 @@
 package main
 
-import (
-	"github.com/gin-gonic/gin"
-	"github.com/thinkerou/favicon"
-	"net/http"
-)
+import "Zura-chanZura/app/infrastructure"
 
 func main() {
-	engine := gin.Default()
+	r := infrastructure.NewRouting()
+	r.Run()
+
+	/*engine := gin.Default()
 
 	engine.Use(favicon.New("./assets/icon/favicon.ico"))
 	engine.LoadHTMLGlob("templates/*")
@@ -18,5 +17,5 @@ func main() {
 			"text" : "ずらちゃんずら💓",
 		})
 	})
-	engine.Run(":8080")
+	engine.Run(":8080")*/
 }
