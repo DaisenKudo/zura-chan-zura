@@ -3,7 +3,6 @@ package infrastructure
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/thinkerou/favicon"
-	"log"
 	"net/http"
 	"os"
 )
@@ -14,7 +13,7 @@ type Routing struct {
 }
 
 func NewRouting() *Routing {
-	c := NewConfig()
+	c, _ := NewConfig()
 	r := &Routing{
 		Gin: gin.Default(),
 		AbsolutePath: c.AbsolutePath,
@@ -25,12 +24,9 @@ func NewRouting() *Routing {
 }
 
 func (r *Routing) loadTemplates() {
-	println("-------------------------------")
-	println(r.AbsolutePath)
-	println("-------------------------------")
 	r.Gin.Use(favicon.New("./assets/icon/favicon.ico"))
 	r.Gin.Static("/assets", r.AbsolutePath + "/assets")
-	r.Gin.LoadHTMLGlob(r.AbsolutePath + "/app/interfaces/presenters/index.html")
+	r.Gin.LoadHTMLGlob(r.AbsolutePath + "/app/interfaces/presenters/*")
 }
 
 func (r *Routing) setRouting() {
@@ -42,14 +38,11 @@ func (r *Routing) setRouting() {
 	})
 }
 
-func (r *Routing) Run() {
+func (r *Routing) Run() error {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
 
-	err := r.Gin.Run(":" + port)
-	if err != nil {
-		log.Fatal()
-	}
+	return r.Gin.Run(":" + port)
 }
