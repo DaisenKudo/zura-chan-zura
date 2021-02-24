@@ -5,6 +5,7 @@ import (
 	"github.com/thinkerou/favicon"
 	"log"
 	"net/http"
+	"os"
 )
 
 type Routing struct {
@@ -39,7 +40,12 @@ func (r *Routing) setRouting() {
 }
 
 func (r *Routing) Run() {
-	err := r.Gin.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	err := r.Gin.Run(":" + port)
 	if err != nil {
 		log.Fatal()
 	}
