@@ -1,3 +1,5 @@
+[![Actions Status: CI](https://github.com/DaisenKudo/Zura-chanZura/workflows/CI/badge.svg?branch=main)](https://github.com/DaisenKudo/Zura-chanZura/actions?query=workflow%3A"CI")
+
 # Zura-chanZura
 すばやくWebサイトを構築できるテンプレート
 Golang + gin + Typescriptが使えます。Herokuへのデプロイも。
