@@ -7,15 +7,19 @@ import (
 	"os"
 )
 
+const (
+	zura = "ずらちゃんずら💓"
+)
+
 type Routing struct {
-	Gin *gin.Engine
+	Gin          *gin.Engine
 	AbsolutePath string
 }
 
 func NewRouting() *Routing {
 	c, _ := NewConfig()
 	r := &Routing{
-		Gin: gin.Default(),
+		Gin:          gin.Default(),
 		AbsolutePath: c.AbsolutePath,
 	}
 	r.loadTemplates()
@@ -25,15 +29,23 @@ func NewRouting() *Routing {
 
 func (r *Routing) loadTemplates() {
 	r.Gin.Use(favicon.New("./assets/icon/favicon.ico"))
-	r.Gin.Static("/assets", r.AbsolutePath + "/assets")
+	r.Gin.Static("/assets", r.AbsolutePath+"/assets")
 	r.Gin.LoadHTMLGlob(r.AbsolutePath + "/app/interfaces/presenters/*")
 }
 
 func (r *Routing) setRouting() {
-	r.Gin.GET("/", func (c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H {
-			"title" : "ずらちゃんずら💓",
-			"text" : "ずらちゃんずら💓",
+	//index
+	r.Gin.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": zura,
+			"text":  zura,
+		})
+	})
+
+	//about
+	r.Gin.GET("/about", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "about.html", gin.H{
+			"title": "このページについて | " + zura,
 		})
 	})
 }
