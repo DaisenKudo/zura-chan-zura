@@ -13,14 +13,11 @@ const (
 
 type Routing struct {
 	Gin          *gin.Engine
-	AbsolutePath string
 }
 
 func NewRouting() *Routing {
-	c, _ := NewConfig()
 	r := &Routing{
 		Gin:          gin.Default(),
-		AbsolutePath: c.AbsolutePath,
 	}
 	r.loadTemplates()
 	r.setRouting()
@@ -29,8 +26,8 @@ func NewRouting() *Routing {
 
 func (r *Routing) loadTemplates() {
 	r.Gin.Use(favicon.New("./assets/icon/favicon.ico"))
-	r.Gin.Static("/assets", r.AbsolutePath+"/assets")
-	r.Gin.LoadHTMLGlob(r.AbsolutePath + "/app/interfaces/presenters/*")
+	r.Gin.Static("/assets", "./assets")
+	r.Gin.LoadHTMLGlob("./app/interfaces/presenters/*")
 }
 
 func (r *Routing) setRouting() {
