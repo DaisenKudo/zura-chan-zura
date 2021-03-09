@@ -8,5 +8,5 @@ import (
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := infrastructure.NewRouting()
-	r.Run()
+	_ = r.Run()
 }
