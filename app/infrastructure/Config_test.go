@@ -8,7 +8,7 @@ import (
 func TestNewConfigSuccess(t *testing.T) {
 	result, err := NewConfig()
 	if err != nil {
-		t.Fatal("絶対パスの取得に失敗")
+		t.Fatal("絶対パスの取得に失敗しました")
 	}
 	absolutePath, _ := os.Getwd()
 	if result.AbsolutePath != absolutePath {
