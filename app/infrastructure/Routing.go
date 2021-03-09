@@ -46,6 +46,9 @@ func (r *Routing) setRouting() {
 	r.Gin.GET("/about", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "about.html", gin.H{
 			"title": "このページについて | " + zura,
+			"text1":  "このページではHonokaを使用しています。",
+			"text2" : "HonokaはMIT Licenseで提供されています。",
+			"href" : "https://honokak.osaka",
 		})
 	})
 }
