@@ -41,8 +41,8 @@
 }
 
 .bg-2::before {
-    background-color: #ffff00;
-    transition: transform ease 1.5s;
+    background-color: #ffff63;
+    transition: transform ease 1.2s;
 }
 
 .text {
