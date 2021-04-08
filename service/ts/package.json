@@ -2,7 +2,7 @@
   "name": "zura-chanzura",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode production"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.5",
