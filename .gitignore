@@ -16,3 +16,7 @@
 
 .idea
 node_modules
+
+# build
+static/js
+static/css
