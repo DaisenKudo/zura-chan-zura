@@ -1,1 +1,1 @@
-web: bin/Zura-chanZura
+web: bin/zura-chan-zura
