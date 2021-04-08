@@ -1,5 +1,5 @@
 module.exports = {
-    mode: "development",
+    mode: "production",
     entry: "./bundle.ts",
     output: {
         path: __dirname + "/../../assets/js",
