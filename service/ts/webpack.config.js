@@ -1,6 +1,6 @@
 module.exports = {
     mode: "development",
-    entry: "./share.ts",
+    entry: "./bundle.ts",
     output: {
         path: __dirname + "/../../assets/js",
         filename: "bundle.js",

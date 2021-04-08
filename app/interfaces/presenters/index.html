@@ -7,28 +7,37 @@
 
     <title>{{.title}}</title>
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bundle.css">
 </head>
 <body class="no-thank-yu">
+<!--
 <header class="navbar navbar-expand-md navbar-dark bd-navbar">
     <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main nav">
     </nav>
 </header>
+-->
 <main>
     <div class="container-fluid">
         <div class="row align-items-center" style="height: 200px">
-            <div class="col-12 text-center">
-                <h1>{{.text}}</h1>
-            </div>
-            <div class="col-12 text-center">
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button btn btn-primary" data-text="{{.text}}" data-size="large" data-show-count="false">ツイート</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class="mx-auto bg bg-1">
+                <div class="bg bg-2">
+                    <span class="text">
+                        <span>{{.text}}</span>
+                        <span class="col-12 text-center tweet-button">
+                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="{{.text}}" data-size="large" data-show-count="false">ツイート</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </span>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
 </main>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/bundle.js"></script>
 </body>
 </html>
