@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Zura-chanZura/app/infrastructure"
 	"github.com/gin-gonic/gin"
+	"zura-chan-zura/app/infrastructure"
 )
 
 func main() {

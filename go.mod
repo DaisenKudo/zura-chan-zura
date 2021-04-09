@@ -1,4 +1,4 @@
-module Zura-chanZura
+module zura-chan-zura
 
 go 1.16
 

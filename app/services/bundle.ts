@@ -1,3 +1,8 @@
+import "bootstrap-honoka/dist/css/bootstrap.min.css"
+import "bootstrap-honoka"
+
+import "./style.scss"
+
 const CLASSNAME = "visible";
 const WAIT = 0;
 
