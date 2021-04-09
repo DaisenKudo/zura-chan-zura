@@ -1,4 +1,4 @@
-[![Actions Status: CI](https://github.com/DaisenKudo/Zura-chanZura/workflows/CI/badge.svg?branch=main)](https://github.com/DaisenKudo/Zura-chanZura/actions?query=workflow%3A"CI")
+[![Actions Status: CI](https://github.com/DaisenKudo/Zura-chanZura/workflows/CI/badge.svg?branch=dev)](https://github.com/DaisenKudo/Zura-chanZura/actions?query=workflow%3A"CI")
 
 # Zura-chanZura
 ずらちゃんずら💓をすばやくツイート
