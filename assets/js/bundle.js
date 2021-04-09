@@ -1,1 +1,0 @@
-(()=>{const s="visible";setInterval((()=>{$(".bg-1").addClass(s),$(".bg-2").addClass(s)}),0)})();
