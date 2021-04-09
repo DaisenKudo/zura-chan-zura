@@ -1,3 +1,6 @@
+$primaty-font-size: xxx-large;
+$primaty-font-weight: bold;
+
 .bg {
     display: flex;
     flex-direction: column;
@@ -59,7 +62,8 @@
 
 .text span:first-child {
     transform: translate(0, 50px);
-    font-size: xxx-large;
+    font-size: $primaty-font-size;
+    font-weight: $primaty-font-weight;
     transition-delay: .3s;
 }
 
