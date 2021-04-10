@@ -1,6 +1,13 @@
 $primaty-font-size: xxx-large;
 $primaty-font-weight: bold;
 
+#container-canvas {
+    padding-top: 300px;
+}
+canvas {
+    height: 200px;
+}
+
 .bg {
     display: flex;
     flex-direction: column;

@@ -18,17 +18,9 @@
 -->
 <main>
     <div class="container-fluid">
-        <div class="row align-items-center" style="height: 200px">
-            <div class="mx-auto bg bg-1">
-                <div class="bg bg-2">
-                    <span class="text">
-                        <span>{{.text}}</span>
-                        <span class="col-12 text-center tweet-button">
-                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="{{.text}}" data-size="large" data-show-count="false">ツイート</a>
-                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                        </span>
-                    </span>
-                </div>
+        <div class="row align-items-center">
+            <div class="mx-auto" id="container-canvas">
+                <canvas id="canvas-wave" width="1200" height="600"></canvas>
             </div>
         </div>
     </div>
