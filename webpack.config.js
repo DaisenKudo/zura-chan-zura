@@ -19,7 +19,7 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            url: false,
+                            url: true,
                             sourceMap: false,
                             importLoaders: 2,
                         },
@@ -51,6 +51,11 @@ module.exports = {
                     from: `${__dirname}/app/services/favicon.ico`,
                     to: `${__dirname}/dist/assets`,
                     context: `${__dirname}`,
+                },
+                {
+                    from: `${__dirname}/app/services/bg.jpg`,
+                    to: `${__dirname}/dist/assets`,
+                    context: `${__dirname}`
                 }
             ]
         }),
