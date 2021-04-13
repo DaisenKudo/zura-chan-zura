@@ -28,13 +28,26 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             sourceMap: false,
-                        }
+                        },
                     },
                 ]
             },
             {
                 test: /\.ts$/,
                 loader: "ts-loader",
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "./",
+                            publicPath: "./"
+                        },
+                    },
+                ]
             },
         ],
     },
@@ -53,10 +66,10 @@ module.exports = {
                     context: `${__dirname}`,
                 },
                 {
-                    from: `${__dirname}/app/services/bg.jpg`,
+                    from: `${__dirname}/app/services/tw_logo.png`,
                     to: `${__dirname}/dist/assets`,
                     context: `${__dirname}`
-                }
+                },
             ]
         }),
     ]

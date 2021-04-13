@@ -6,15 +6,50 @@ $primaty-font-weight: bold;
 }
 canvas {
     height: 200px;
+    width: max-content;
+}
+
+.jumbotron-extend {
+    position: relative;
+    height: 100vh;
 }
 
 .background {
-    background-image: url("assets/bg.jpg");
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
 }
 
 .primary-text {
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     color: #000000;
     font-size: $primaty-font-size;
     font-weight: $primaty-font-weight;
+    text-align: center;
 }
+.twitter-icon {
+    background-image: url(tw_logo.png);
+}
+
+.twitter-icon::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: text-top;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: lighten ;
+    background-position : center center;
+    background-repeat: no-repeat;
+}
+
+.twitter-share-button {
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+}
+
+@import "~bootstrap-honoka";

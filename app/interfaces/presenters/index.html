@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>{{.title}}</title>
 
     <link rel="stylesheet" type="text/css" href="/assets/style.css">
@@ -17,17 +16,26 @@
 </header>
 -->
 <main>
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="mx-auto" id="container-canvas">
-                <div class="col-12 text-center primary-text">{{.text}}</div>
-                <canvas id="canvas-wave" width="800" height="300"></canvas>
+    <div class="jumbotron-fluid jumbotron-extend background">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="mx-auto" id="container-canvas">
+                    <div class="display-4 primary-text">{{.text}}</div>
+                    <div class="col-12 text-center">
+                        <a href="https://twitter.com/share?url=https://zura-chan-zura.herokuapp.com&text={{.text}}" class="btn btn-primary" role="button">
+                            <i class="twitter-icon"></i>
+                            <span>ツイート</span>
+                        </a>
+                    </div>
+                    <canvas id="canvas-wave" width="800" height="300"></canvas>
+                </div>
             </div>
         </div>
     </div>
 </main>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/1634dbd2b0.js" crossorigin="anonymous"></script>
 <script src="/assets/bundle.js"></script>
 </body>
 </html>
