@@ -2,11 +2,16 @@ $primaty-font-size: xxx-large;
 $primaty-font-weight: bold;
 
 #container-canvas {
-    padding-top: 300px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
 }
 canvas {
-    height: 200px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
     width: max-content;
+    height: auto;
 }
 
 .jumbotron-extend {
@@ -19,6 +24,13 @@ canvas {
     background-repeat: no-repeat;
 }
 
+.contents-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .primary-text {
     display: block;
     margin-left: auto;
@@ -28,28 +40,16 @@ canvas {
     font-weight: $primaty-font-weight;
     text-align: center;
 }
-.twitter-icon {
-    background-image: url(tw_logo.png);
-}
 
-.twitter-icon::before {
+img.twitter-icon {
     content: "";
-    width: 16px;
+    width: 21px;
     height: 16px;
     display: inline-block;
     margin-right: 5px;
     vertical-align: text-top;
-    background-color: rgba(255, 255, 255, 0.5);
-    background-blend-mode: lighten ;
     background-position : center center;
     background-repeat: no-repeat;
-}
-
-.twitter-share-button {
-    display: block;
-    position: absolute;
-    left: 50%;
-    margin-right: -50%;
 }
 
 @import "~bootstrap-honoka";

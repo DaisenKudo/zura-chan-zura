@@ -18,15 +18,17 @@
 <main>
     <div class="jumbotron-fluid jumbotron-extend background">
         <div class="container-fluid">
-            <div class="row align-items-center">
+            <div class="row contents-block">
+                <div class="display-4 primary-text">{{.text}}</div>
+                <div class="col-12 text-center">
+                    <a href="https://twitter.com/share?url=https://zura-chan-zura.herokuapp.com&text={{.text}}" class="btn btn-primary" role="button">
+                        <img class="twitter-icon" src="assets/tw_logo.png"/>
+                        <span>ツイート</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="mx-auto" id="container-canvas">
-                    <div class="display-4 primary-text">{{.text}}</div>
-                    <div class="col-12 text-center">
-                        <a href="https://twitter.com/share?url=https://zura-chan-zura.herokuapp.com&text={{.text}}" class="btn btn-primary" role="button">
-                            <i class="twitter-icon"></i>
-                            <span>ツイート</span>
-                        </a>
-                    </div>
                     <canvas id="canvas-wave" width="800" height="300"></canvas>
                 </div>
             </div>
@@ -35,7 +37,6 @@
 </main>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/1634dbd2b0.js" crossorigin="anonymous"></script>
 <script src="/assets/bundle.js"></script>
 </body>
 </html>
