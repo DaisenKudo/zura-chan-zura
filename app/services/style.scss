@@ -6,12 +6,13 @@ $primaty-font-weight: bold;
     right: 0;
     bottom: 0;
 }
+
 canvas {
     position: fixed;
     right: 0;
     bottom: 0;
     width: max-content;
-    height: auto;
+    height: 10%;
 }
 
 .jumbotron-extend {
@@ -35,7 +36,7 @@ canvas {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    color: #000000;
+    color: rgba(255, 255, 255, 255);
     font-size: $primaty-font-size;
     font-weight: $primaty-font-weight;
     text-align: center;
