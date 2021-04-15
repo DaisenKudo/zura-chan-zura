@@ -19,7 +19,7 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            url: false,
+                            url: true,
                             sourceMap: false,
                             importLoaders: 2,
                         },
@@ -28,13 +28,26 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             sourceMap: false,
-                        }
+                        },
                     },
                 ]
             },
             {
                 test: /\.ts$/,
                 loader: "ts-loader",
+            },
+            {
+                test: /\.(jpg|png)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]",
+                            outputPath: "./",
+                            publicPath: "./"
+                        },
+                    },
+                ]
             },
         ],
     },
@@ -51,7 +64,12 @@ module.exports = {
                     from: `${__dirname}/app/services/favicon.ico`,
                     to: `${__dirname}/dist/assets`,
                     context: `${__dirname}`,
-                }
+                },
+                {
+                    from: `${__dirname}/app/services/tw_logo.png`,
+                    to: `${__dirname}/dist/assets`,
+                    context: `${__dirname}`
+                },
             ]
         }),
     ]
