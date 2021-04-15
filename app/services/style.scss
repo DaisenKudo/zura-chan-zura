@@ -1,5 +1,7 @@
-$primaty-font-size: xxx-large;
-$primaty-font-weight: bold;
+@import "~bootstrap-honoka";
+
+$primaty-font-size: 3rem;
+$primaty-font-weight: normal;
 
 #container-canvas {
     position: fixed;
@@ -52,5 +54,3 @@ img.twitter-icon {
     background-position : center center;
     background-repeat: no-repeat;
 }
-
-@import "~bootstrap-honoka";
