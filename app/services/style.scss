@@ -1,47 +1,49 @@
-@import "~bootstrap-honoka";
+//@import "~bootstrap-honoka";
 
-$primaty-font-size: 2.5rem;
-$primaty-font-weight: normal;
+main {
+    min-height: 100vh;
+}
 
 #container-canvas {
     position: fixed;
     right: 0;
     bottom: 0;
+    mix-blend-mode: overlay;
 }
 
 canvas {
     position: fixed;
+    display: flex;
     right: 0;
     bottom: 0;
-    width: max-content;
+    width: 100vh;
     height: 10%;
 }
 
-.jumbotron-extend {
+.hero-header {
     position: relative;
     height: 100vh;
-}
-
-.background {
     background-image: url(bg.jpg);
+    background-position: left;
     background-repeat: no-repeat;
 }
 
-.contents-block {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+@mixin content {
+    text-align: center;
 }
 
 .primary-text {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     color: rgba(255, 255, 255, 255);
-    font-size: $primaty-font-size;
-    font-weight: $primaty-font-weight;
-    text-align: center;
+    mix-blend-mode: screen;
+    font-size: 8vw;
+    font-weight: normal;
+    @include content
+}
+
+.twitter-button {
+    padding-top: 8px;
+    @include content
 }
 
 img.twitter-icon {

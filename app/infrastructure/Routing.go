@@ -30,10 +30,17 @@ func (r *Routing) loadTemplates() {
 }
 
 func (r *Routing) setRouting() {
+	const ZURA = "ずらちゃんずら"
+	const DEPLOY = "https://zura-chan-zura.herokuapp.com"
+
 	r.Gin.GET("/", func (c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H {
-			"title" : "ずらちゃんずら💓",
-			"text" : "ずらちゃんずら💓",
+			"title" : ZURA + "💓",
+			"text" : ZURA,
+			"face" : "ﾉcﾉ,,・o・,,ﾉﾚ💓",
+			"href" : "https://twitter.com/share" +
+				"?url=" + DEPLOY +
+				"&text=" + ZURA + "💓",
 		})
 	})
 }
