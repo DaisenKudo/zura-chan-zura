@@ -70,6 +70,11 @@ module.exports = {
                     to: `${__dirname}/dist/assets`,
                     context: `${__dirname}`
                 },
+                {
+                    from: `${__dirname}/app/services/facelist.yaml`,
+                    to: `${__dirname}/dist/assets`,
+                    context: `${__dirname}`
+                },
             ]
         }),
     ]
