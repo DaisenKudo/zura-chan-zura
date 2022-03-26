@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"time"
 	"strconv"
 	"testing"
 )
@@ -13,7 +14,7 @@ const (
 func TestMainSuccess(t *testing.T) {
 	go main()
 	
-	sleep(5000)
+	time.Sleep(5000)
 	
 	result, err := http.Get("http://localhost:" + strconv.Itoa(port))
 	if err != nil {
