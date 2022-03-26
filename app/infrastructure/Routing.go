@@ -56,8 +56,8 @@ func (r *Routing) setRouting() {
 			"title": ZURA + "💓",
 			"text":  ZURA,
 			"face":  face,
-			"href": "\n\nhttps://twitter.com/share" +
-				"?url=" + DEPLOY +
+			"href": "https://twitter.com/share" +
+				"?url=" + "\n\n" + DEPLOY +
 				"&text=" + ZURA + face,
 		})
 	})
