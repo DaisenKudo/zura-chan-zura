@@ -66,7 +66,7 @@ func (r *Routing) setRouting() {
 func (r *Routing) Run() error {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "80"
 	}
 
 	return r.Gin.Run(":" + port)
