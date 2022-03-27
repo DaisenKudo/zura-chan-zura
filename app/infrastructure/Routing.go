@@ -48,7 +48,7 @@ func (r *Routing) loadTemplates() {
 
 func (r *Routing) setRouting() {
 	const ZURA = "ずらちゃんずら"
-	const DEPLOY = "https://zura-chan-zura.herokuapp.com"
+	const DEPLOY = "http://zura-chan-zura.com"
 
 	r.Gin.GET("/", func(c *gin.Context) {
 		face := r.getFace()
@@ -66,7 +66,7 @@ func (r *Routing) setRouting() {
 func (r *Routing) Run() error {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "80"
 	}
 
 	return r.Gin.Run(":" + port)
