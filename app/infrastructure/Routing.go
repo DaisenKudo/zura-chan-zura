@@ -61,6 +61,48 @@ func (r *Routing) setRouting() {
 				"&text=" + ZURA + face,
 		})
 	})
+
+	r.Gin.HEAD("/", func(c *gin.Context) {
+		face := r.getFace()
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": ZURA + "💓",
+			"text":  ZURA,
+			"face":  face,
+			"href": "https://twitter.com/share" +
+				"?url=" + "\n\n" + DEPLOY +
+				"&text=" + ZURA + face,
+		})
+	})
+
+	r.Gin.POST("/*any", func(c *gin.Context) {
+		c.AbortWithStatus(http.StatusForbidden)
+	})
+
+	r.Gin.PUT("/*any", func(c *gin.Context) {
+		c.AbortWithStatus(http.StatusForbidden)
+	})
+
+	r.Gin.DELETE("/*any", func(c *gin.Context) {
+		c.AbortWithStatus(http.StatusForbidden)
+	})
+
+	r.Gin.Handle(http.MethodConnect, "/*any", func(c *gin.Context) {
+		c.AbortWithStatus(http.StatusForbidden)
+	})
+
+	r.Gin.OPTIONS("/*any", func(c *gin.Context) {
+		c.JSON(http.StatusMethodNotAllowed, gin.H{
+			"text": "ずらちゃん is member of Aqours.",
+		})
+	})
+
+	r.Gin.PATCH("/*any", func(c *gin.Context) {
+		c.AbortWithStatus(http.StatusForbidden)
+	})
+
+	r.Gin.Handle(http.MethodTrace, "/*any", func(c *gin.Context) {
+		c.AbortWithStatus(http.StatusForbidden)
+	})
 }
 
 func (r *Routing) Run() error {
