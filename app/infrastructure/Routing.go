@@ -16,6 +16,11 @@ type Routing struct {
 	AbsolutePath string
 }
 
+func (r *Routing) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
+	//TODO implement me
+	panic("implement me")
+}
+
 type FaceList struct {
 	Faces []string `yaml:"faces"`
 }
@@ -37,6 +42,7 @@ func NewRouting() *Routing {
 	}
 	r.loadTemplates()
 	r.setRouting()
+	r.certManager()
 	return r
 }
 
@@ -106,12 +112,13 @@ func (r *Routing) setRouting() {
 }
 
 func (r *Routing) Run() error {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "80"
-	}
+	//port := os.Getenv("PORT")
+	//if port == "" {
+	//	port = "443"
+	//}
+	port := "443"
 
-	return r.Gin.Run(":" + port)
+	return r.Gin.RunTLS(":"+port, "")
 }
 
 func (r *Routing) getFace() string {
