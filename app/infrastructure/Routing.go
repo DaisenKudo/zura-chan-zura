@@ -42,7 +42,6 @@ func NewRouting() *Routing {
 	}
 	r.loadTemplates()
 	r.setRouting()
-	r.certManager()
 	return r
 }
 
@@ -54,7 +53,7 @@ func (r *Routing) loadTemplates() {
 
 func (r *Routing) setRouting() {
 	const ZURA = "ずらちゃんずら"
-	const DEPLOY = "http://zura-chan-zura.com"
+	const DEPLOY = "https://zura-chan-zura.com"
 
 	r.Gin.GET("/", func(c *gin.Context) {
 		face := r.getFace()
@@ -118,7 +117,7 @@ func (r *Routing) Run() error {
 	//}
 	port := "443"
 
-	return r.Gin.RunTLS(":"+port, "")
+	return r.Gin.RunTLS(":"+port, "/home/ubuntu/zura-chan-zura.com.conf.d/cert.pem", "/home/ubuntu/zura-chan-zura.com.conf.d/privkey.pem")
 }
 
 func (r *Routing) getFace() string {
