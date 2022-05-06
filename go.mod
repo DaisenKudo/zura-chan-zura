@@ -6,7 +6,13 @@ go 1.17
 require github.com/gin-gonic/gin v1.7.7
 
 require (
+<<<<<<< HEAD
 	github.com/thinkerou/favicon v0.1.0
+=======
+	github.com/gin-gonic/autotls v0.0.3
+	github.com/thinkerou/favicon v0.1.0
+	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
+>>>>>>> main
 	gopkg.in/yaml.v2 v2.4.0
 )
 
