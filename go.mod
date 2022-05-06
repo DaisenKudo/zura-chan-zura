@@ -6,13 +6,7 @@ go 1.17
 require github.com/gin-gonic/gin v1.7.7
 
 require (
-<<<<<<< HEAD
 	github.com/thinkerou/favicon v0.1.0
-=======
-	github.com/gin-gonic/autotls v0.0.3
-	github.com/thinkerou/favicon v0.1.0
-	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
->>>>>>> main
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -30,7 +24,4 @@ require (
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/sys v0.0.0-20200116001909-b77594299b42 // indirect
-	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3 // indirect
-	golang.org/x/sys v0.0.0-20200116001909-b77594299b42 // indirect
-	golang.org/x/text v0.3.2 // indirect
 )
