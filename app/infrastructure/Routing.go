@@ -111,7 +111,6 @@ func (r *Routing) Run() error {
 	//	port = "443"
 	//}
 	port := "443"
-
 	return r.Gin.RunTLS(":"+port, "/home/ubuntu/zura-chan-zura.com.conf.d/fullchain.pem", "/home/ubuntu/zura-chan-zura.com.conf.d/privkey.pem")
 }
 
