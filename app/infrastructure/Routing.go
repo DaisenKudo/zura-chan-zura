@@ -106,12 +106,8 @@ func (r *Routing) setRouting() {
 }
 
 func (r *Routing) Run() error {
-	//port := os.Getenv("PORT")
-	//if port == "" {
-	//	port = "443"
-	//}
-	port := "443"
-	return r.Gin.RunTLS(":"+port, "/home/ubuntu/zura-chan-zura.com.conf.d/fullchain.pem", "/home/ubuntu/zura-chan-zura.com.conf.d/privkey.pem")
+	port := "8703"
+	return r.Gin.Run(":" + port)
 }
 
 func (r *Routing) getFace() string {
