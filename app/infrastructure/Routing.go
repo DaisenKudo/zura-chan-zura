@@ -49,10 +49,10 @@ func (r *Routing) loadTemplates() {
 }
 
 func (r *Routing) setRouting() {
-	var zura = r.getZura()
 	const DEPLOY = "https://zura-chan-zura.com"
 
 	r.Gin.GET("/", func(c *gin.Context) {
+		zura := r.getZura()
 		face := r.getFace()
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": zura + "💓",
@@ -65,6 +65,7 @@ func (r *Routing) setRouting() {
 	})
 
 	r.Gin.HEAD("/", func(c *gin.Context) {
+		zura := r.getZura()
 		face := r.getFace()
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": zura + "💓",
