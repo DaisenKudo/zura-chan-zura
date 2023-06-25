@@ -1,13 +1,14 @@
 package infrastructure
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/thinkerou/favicon"
-	yaml "gopkg.in/yaml.v2"
 	"math/rand"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/thinkerou/favicon"
+	yaml "gopkg.in/yaml.v2"
 )
 
 type Routing struct {
@@ -18,6 +19,7 @@ type Routing struct {
 
 type FaceList struct {
 	Faces []string `yaml:"faces"`
+	Zura  []string `yaml:"zura"`
 }
 
 func NewRouting() *Routing {
@@ -47,30 +49,30 @@ func (r *Routing) loadTemplates() {
 }
 
 func (r *Routing) setRouting() {
-	const ZURA = "ずらちゃんずら"
+	var zura = r.getZura()
 	const DEPLOY = "https://zura-chan-zura.com"
 
 	r.Gin.GET("/", func(c *gin.Context) {
 		face := r.getFace()
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": ZURA + "💓",
-			"text":  ZURA,
+			"title": zura + "💓",
+			"text":  zura,
 			"face":  face,
 			"href": "https://twitter.com/intent/tweet" +
 				"?url=" + "\n\n" + DEPLOY +
-				"&text=" + ZURA + face,
+				"&text=" + zura + face,
 		})
 	})
 
 	r.Gin.HEAD("/", func(c *gin.Context) {
 		face := r.getFace()
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": ZURA + "💓",
-			"text":  ZURA,
+			"title": zura + "💓",
+			"text":  zura,
 			"face":  face,
 			"href": "https://twitter.com/share" +
 				"?url=" + "\n\n" + DEPLOY +
-				"&text=" + ZURA + face,
+				"&text=" + zura + face,
 		})
 	})
 
@@ -113,4 +115,9 @@ func (r *Routing) Run() error {
 func (r *Routing) getFace() string {
 	rand.Seed(time.Now().UnixNano())
 	return r.FaceList.Faces[rand.Intn(len(r.FaceList.Faces))]
+}
+
+func (r *Routing) getZura() string {
+	rand.Seed(time.Now().UnixNano())
+	return r.FaceList.Zura[rand.Intn(len(r.FaceList.Zura))]
 }
