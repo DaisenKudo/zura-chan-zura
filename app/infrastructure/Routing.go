@@ -4,7 +4,6 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/thinkerou/favicon"
@@ -13,20 +12,25 @@ import (
 
 type Routing struct {
 	Gin          *gin.Engine
-	FaceList     FaceList
+	School       School
 	AbsolutePath string
 }
 
-type FaceList struct {
+type School struct {
+	Uranohoshi []Character `yaml:"uranohoshi"`
+	Hashnosora []Character `yaml:"hasunosora"`
+}
+
+type Character struct {
 	Faces []string `yaml:"faces"`
-	Zura  []string `yaml:"zura"`
+	Lines []string `yaml:"lines"`
 }
 
 func NewRouting() *Routing {
 	c, _ := NewConfig()
-	//facelistをyamlとして読み込んでRoutingへ格納
-	f, _ := os.ReadFile("./dist/assets/facelist.yaml") //TODO:pathを合わせる
-	var f2 FaceList
+	//CharacterListをyamlとして読み込んでRoutingへ格納
+	f, _ := os.ReadFile("./dist/assets/CharacterList.yaml") //TODO:pathを合わせる
+	var f2 School
 	err := yaml.UnmarshalStrict(f, &f2)
 	if err != nil {
 		panic(err)
@@ -34,7 +38,7 @@ func NewRouting() *Routing {
 
 	r := &Routing{
 		Gin:          gin.Default(),
-		FaceList:     f2,
+		School:       f2,
 		AbsolutePath: c.AbsolutePath,
 	}
 	r.loadTemplates()
@@ -52,28 +56,44 @@ func (r *Routing) setRouting() {
 	const DEPLOY = "https://zura-chan-zura.com"
 
 	r.Gin.GET("/", func(c *gin.Context) {
-		zura := r.getZura()
-		face := r.getFace()
+		char := r.School.Uranohoshi[rand.Intn(len(r.School.Uranohoshi))]
+		line := r.getLine(char)
+		face := r.getFace(char)
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": zura + "💓",
-			"text":  zura,
+			"title": line + "💓",
+			"text":  line,
 			"face":  face,
 			"href": "https://twitter.com/intent/tweet" +
 				"?url=" + "\n\n" + DEPLOY +
-				"&text=" + zura + face,
+				"&text=" + line + face,
+		})
+	})
+
+	r.Gin.GET("/hasu", func(c *gin.Context) {
+		char := r.School.Hashnosora[rand.Intn(len(r.School.Hashnosora))]
+		line := r.getLine(char)
+		face := r.getFace(char)
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": line + "💓",
+			"text":  line,
+			"face":  face,
+			"href": "https://twitter.com/intent/tweet" +
+				"?url=" + "\n\n" + DEPLOY +
+				"&text=" + line + face,
 		})
 	})
 
 	r.Gin.HEAD("/", func(c *gin.Context) {
-		zura := r.getZura()
-		face := r.getFace()
+		char := r.School.Uranohoshi[rand.Intn(len(r.School.Uranohoshi))]
+		face := r.getFace(char)
+		line := r.getLine(char)
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": zura + "💓",
-			"text":  zura,
+			"title": line,
+			"text":  line,
 			"face":  face,
 			"href": "https://twitter.com/share" +
 				"?url=" + "\n\n" + DEPLOY +
-				"&text=" + zura + face,
+				"&text=" + line + face,
 		})
 	})
 
@@ -113,12 +133,10 @@ func (r *Routing) Run() error {
 	return r.Gin.Run(":" + port)
 }
 
-func (r *Routing) getFace() string {
-	rand.Seed(time.Now().UnixNano())
-	return r.FaceList.Faces[rand.Intn(len(r.FaceList.Faces))]
+func (r *Routing) getFace(char Character) string {
+	return char.Faces[rand.Intn(len(char.Faces))]
 }
 
-func (r *Routing) getZura() string {
-	rand.Seed(time.Now().UnixNano())
-	return r.FaceList.Zura[rand.Intn(len(r.FaceList.Zura))]
+func (r *Routing) getLine(char Character) string {
+	return char.Lines[rand.Intn(len(char.Lines))]
 }
