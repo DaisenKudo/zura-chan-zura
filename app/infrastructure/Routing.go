@@ -1,13 +1,15 @@
 package infrastructure
 
 import (
+	"encoding/json"
+	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/thinkerou/favicon"
-	yaml "gopkg.in/yaml.v2"
 )
 
 type Routing struct {
@@ -17,22 +19,26 @@ type Routing struct {
 }
 
 type School struct {
-	Uranohoshi []Character `yaml:"uranohoshi"`
-	Hashnosora []Character `yaml:"hasunosora"`
+	Uranohoshi []Character `json:"uranohoshi"`
+	Hashnosora []Character `json:"hasunosora"`
 }
 
 type Character struct {
-	Faces []string `yaml:"faces"`
-	Lines []string `yaml:"lines"`
+	Faces []string `json:"faces"`
+	Lines []string `json:"lines"`
 }
 
 func NewRouting() *Routing {
 	c, _ := NewConfig()
 	//CharacterListをyamlとして読み込んでRoutingへ格納
-	f, _ := os.ReadFile("./dist/assets/CharacterList.yaml") //TODO:pathを合わせる
+	f, _ := os.ReadFile("./dist/assets/characterslist.json") //TODO:pathを合わせる
 	var f2 School
-	err := yaml.UnmarshalStrict(f, &f2)
+	err := json.Unmarshal(f, &f2)
 	if err != nil {
+		if err, ok := err.(*json.SyntaxError); ok {
+			fmt.Println(string(f[err.Offset-5 : err.Offset+5]))
+		}
+		log.Fatal(err)
 		panic(err)
 	}
 
@@ -53,7 +59,8 @@ func (r *Routing) loadTemplates() {
 }
 
 func (r *Routing) setRouting() {
-	const DEPLOY = "https://zura-chan-zura.com"
+	const DEPLOY_ROOT = "https://zura-chan-zura.com"
+	const DEPLOY_HASU = DEPLOY_ROOT + "/hasu"
 
 	r.Gin.GET("/", func(c *gin.Context) {
 		char := r.School.Uranohoshi[rand.Intn(len(r.School.Uranohoshi))]
@@ -64,7 +71,7 @@ func (r *Routing) setRouting() {
 			"text":  line,
 			"face":  face,
 			"href": "https://twitter.com/intent/tweet" +
-				"?url=" + "\n\n" + DEPLOY +
+				"?url=" + "\n\n" + DEPLOY_ROOT +
 				"&text=" + line + face,
 		})
 	})
@@ -78,7 +85,7 @@ func (r *Routing) setRouting() {
 			"text":  line,
 			"face":  face,
 			"href": "https://twitter.com/intent/tweet" +
-				"?url=" + "\n\n" + DEPLOY +
+				"?url=" + "\n\n" + DEPLOY_HASU +
 				"&text=" + line + face,
 		})
 	})
@@ -92,7 +99,7 @@ func (r *Routing) setRouting() {
 			"text":  line,
 			"face":  face,
 			"href": "https://twitter.com/share" +
-				"?url=" + "\n\n" + DEPLOY +
+				"?url=" + "\n\n" + DEPLOY_ROOT +
 				"&text=" + line + face,
 		})
 	})

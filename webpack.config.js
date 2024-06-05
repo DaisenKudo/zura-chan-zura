@@ -71,7 +71,7 @@ module.exports = {
                     context: `${__dirname}`
                 },
                 {
-                    from: `${__dirname}/app/services/characterslist.yaml`,
+                    from: `${__dirname}/app/services/characterslist.json`,
                     to: `${__dirname}/dist/assets`,
                     context: `${__dirname}`
                 },
